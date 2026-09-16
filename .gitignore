@@ -1,0 +1,13 @@
+.*
+!/.gitignore
+arch_pkg/
+deb_pkg/
+svg/
+svgconf/
+svgpng/
+retrosmart-*
+*.tar.xz
+*.pkg.tar.zst
+*.deb
+*~
+PKGBUILD
