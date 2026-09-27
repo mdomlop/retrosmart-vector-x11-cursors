@@ -428,3 +428,16 @@ clean_ocs:
         png cursor index link \
         clean clean_hotspot clean_svg clean_png clean_themes clean_ocs \
         install uninstall showin pkg_deb pkg_arch pkg_ocs
+
+
+PREVIEW := alias context-menu default help progress3 size_bdiag col-resize all-scroll
+PREVIEWCOMMON := pointer openhand text wait01 pirate zoom-in cell crosshair dnd-no-drop
+
+PREVIEWBLACK := $(addprefix svgpng/retrosmart-vector-xcursor-black-color-shadow/96-, $(PREVIEW) $(PREVIEWCOMMON))
+PREVIEWWHITE := $(addprefix svgpng/retrosmart-vector-xcursor-white-color-shadow/96-, $(PREVIEW))
+
+PREVIEW := $(addsuffix .png,$(PREVIEWBLACK) $(PREVIEWWHITE))
+
+preview.png: 
+	montage $(PREVIEW) -tile 5x5 -geometry 96x96+10+10 $@
+
