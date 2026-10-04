@@ -430,13 +430,13 @@ clean_ocs:
         install uninstall showin pkg_deb pkg_arch pkg_ocs
 
 
-PREVIEW := alias context-menu default help progress3 size_bdiag col-resize all-scroll
-PREVIEWCOMMON := pointer openhand text wait01 pirate zoom-in cell crosshair dnd-no-drop
+PREVIEW := default alias context-menu help progress3 size_bdiag col-resize all-scroll x-cursor fleur
+PREVIEWCOMMON := pointer openhand color-picker text wait01 wait04 pirate zoom-in zoom-out cell crosshair dnd-no-drop copy pencil closedhand
 
-PREVIEWBLACK := $(addprefix svgpng/retrosmart-vector-xcursor-black-color-shadow/96-, $(PREVIEW) $(PREVIEWCOMMON))
 PREVIEWWHITE := $(addprefix svgpng/retrosmart-vector-xcursor-white-color-shadow/96-, $(PREVIEW))
+PREVIEWBLACK := $(addprefix svgpng/retrosmart-vector-xcursor-black-color-shadow/96-, $(PREVIEW) $(PREVIEWCOMMON))
 
-PREVIEW := $(addsuffix .png,$(PREVIEWBLACK) $(PREVIEWWHITE))
+PREVIEW := $(addsuffix .png,$(PREVIEWWHITE) $(PREVIEWBLACK))
 
 preview.png: 
 	montage $(PREVIEW) -tile 5x5 -geometry 96x96+10+10 $@
