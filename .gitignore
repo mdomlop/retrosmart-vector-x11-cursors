@@ -5,7 +5,7 @@ deb_pkg/
 svg/
 svgconf/
 svgpng/
-retrosmart-*
+retrosmart-*/
 *.tar.xz
 *.pkg.tar.zst
 *.deb
