@@ -4,7 +4,7 @@
 NAME    := retrosmart
 PKGNAME := xcursor-$(NAME)-vector
 
-VERSION     := 1.0.1b
+VERSION     := $(shell head -n1 ChangeLog | cut -d' ' -f3|tr -d :)
 URL         := https://github.com/mdomlop/retrosmart-vector-x11-cursors
 DESCRIPTION := A retrosmart look collection of cursors for X (vectorized).
 LICENSE     := GPL3
