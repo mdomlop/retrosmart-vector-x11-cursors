@@ -1,7 +1,7 @@
 Retrosmart vector X11 cursors
 -----------------------------
 
-## This is the vectorized version of [Retrosmart X11 cursors](https://github.com/mdomlop/retrosmart-x11-cursors).
+### _This is the vectorized version of [Retrosmart X11 cursors](https://github.com/mdomlop/retrosmart-x11-cursors)._
 
 ![retrosmart-preview](https://raw.githubusercontent.com/mdomlop/retrosmart-vector-x11-cursors/master/preview.png "Retrosmart vector X11 cursor theme preview")
 
