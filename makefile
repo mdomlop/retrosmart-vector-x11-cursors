@@ -23,7 +23,7 @@ ARCH_DIR := arch_pkg
 # las reglas de patrón propias de este proyecto.
 MAKEFLAGS += -r -R
 
-.DEFAULT_GOAL := all
+.DEFAULT_GOAL := svgtheme
 .DELETE_ON_ERROR:
 
 THREADS := $(shell echo "$(MAKEFLAGS)" | grep -oP '(?<=-j)\d+' || echo 1)
@@ -32,8 +32,8 @@ SIZES := 32 36 40 48 56 64 72 80 88 96
 # ---------------------------------------------------------------------------
 # Descubrimiento de fuentes
 # ---------------------------------------------------------------------------
-SRCSVGTHEMES := $(wildcard src/$(NAME)-vector-xcursor-*.theme)
-SRCSVGS      := $(wildcard src/vector.base/*.svg)
+SRCSVGTHEMES := $(wildcard source/$(NAME)-vector-xcursor-*.theme)
+SRCSVGS      := $(wildcard source/vector.base/*.svg)
 
 SVGTHEMES := $(notdir $(basename $(SRCSVGTHEMES)))
 
@@ -186,10 +186,10 @@ $(foreach p,$(LINKPAIRS),$(eval $(call LINK_RULE,$(p))))
 # ---------------------------------------------------------------------------
 # index.theme / cursor.theme
 # ---------------------------------------------------------------------------
-%/index.theme: src/%.theme
+%/index.theme: source/%.theme
 	mkdir -p $(dir $@)
 	cp $< $@
-%/cursor.theme: src/%.theme
+%/cursor.theme: source/%.theme
 	mkdir -p $(dir $@)
 	cp $< $@
 
@@ -198,9 +198,9 @@ $(foreach p,$(LINKPAIRS),$(eval $(call LINK_RULE,$(p))))
 # los colores finales de cada variante.
 #
 # Las variantes "*-color*" prefieren, si existe, el SVG específico de
-# src/vector.base-color/; si no existe, caen automáticamente al SVG de
-# src/vector.base/ (Make usa la primera regla de patrón cuyo prerrequisito
-# exista). Las variantes normales solo usan src/vector.base/.
+# source/vector.base-color/; si no existe, caen automáticamente al SVG de
+# source/vector.base/ (Make usa la primera regla de patrón cuyo prerrequisito
+# exista). Las variantes normales solo usan source/vector.base/.
 #
 # Formato de cada entrada: variante:color_de_cyan:color_de_coral
 # ---------------------------------------------------------------------------
@@ -217,14 +217,14 @@ SVGCOLORS_FALLBACK := \
 	retrosmart-vector-xcursor-black-color-shadow:black:white
 
 define SVG_RULE_PLAIN
-svg/$(1)/%.svg: src/vector.base/%.svg | svg/$(1)
+svg/$(1)/%.svg: source/vector.base/%.svg | svg/$(1)
 	sed -e 's/cyan/$(2)/g' -e 's/coral/$(3)/g' $$< > $$@
 endef
 
 define SVG_RULE_FALLBACK
-svg/$(1)/%.svg: src/vector.base-color/%.svg | svg/$(1)
+svg/$(1)/%.svg: source/vector.base-color/%.svg | svg/$(1)
 	sed -e 's/cyan/$(2)/g' -e 's/coral/$(3)/g' $$< > $$@
-svg/$(1)/%.svg: src/vector.base/%.svg | svg/$(1)
+svg/$(1)/%.svg: source/vector.base/%.svg | svg/$(1)
 	sed -e 's/cyan/$(2)/g' -e 's/coral/$(3)/g' $$< > $$@
 endef
 
@@ -438,6 +438,6 @@ PREVIEWBLACK := $(addprefix svgpng/retrosmart-vector-xcursor-black-color-shadow/
 
 PREVIEW := $(addsuffix .png,$(PREVIEWWHITE) $(PREVIEWBLACK))
 
-preview.png: 
+preview.png:
 	montage $(PREVIEW) -tile 5x5 -geometry 96x96+10+10 $@
 
