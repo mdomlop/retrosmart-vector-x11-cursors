@@ -19,6 +19,8 @@ For a successful compilation you need:
 - **rsvg-convert**: for generate PNGs from SVGs.
 - **imagemagick**: for generate PNG versions with shadow.
 - **xcursorgen**: for generate the cursors from the PNGs.
+    
+To install them in Debian execute: `apt install librsvg2-bin imagemagick x11-apps`
 
 Installation
 ------------
