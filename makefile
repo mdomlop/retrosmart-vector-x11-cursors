@@ -15,7 +15,7 @@ DEBARCH  := all
 DEBPKG   := $(PKGNAME)_$(VERSION)_$(DEBARCH).deb
 DEB_DIR  := debian_pkg
 
-ARCHPKGEXT := '.pkg.tar.zst'
+ARCHPKGEXT := '.pkg.tar.xz'
 ARCHPKG := $(PKGNAME)-$(VERSION)-1-any$(ARCHPKGEXT)
 ARCH_DIR := arch_pkg
 
