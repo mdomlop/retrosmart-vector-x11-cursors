@@ -408,7 +408,7 @@ clean_arch:
 # ---------------------------------------------------------------------------
 # Empaquetado OCS
 # ---------------------------------------------------------------------------
-SVGOCSPKGS := $(PKGNAME)-$(VERSION)-vector.tar.xz
+SVGOCSPKGS := $(PKGNAME)-$(VERSION)-vector.tar.gz
 OCSPKGS    := $(SVGOCSPKGS)
 
 pkg_ocs: $(OCSPKGS)
@@ -419,7 +419,7 @@ pkg_ocs: $(OCSPKGS)
 # Al depender de un target phony, este paso se repite siempre que se pida
 # "pkg_ocs"/"all", lo cual es lo deseable para un paso de empaquetado.
 $(SVGOCSPKGS): svgtheme
-	tar -c -I 'xz -T$(THREADS)' -f $@ retrosmart-vector-xcursor-*
+	tar czf $@ retrosmart-vector-xcursor-*
 
 clean_ocs:
 	rm -rf $(OCSPKGS)
