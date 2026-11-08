@@ -6,6 +6,7 @@ svg/
 svgconf/
 svgpng/
 retrosmart-*/
+*.tar.gz
 *.tar.xz
 *.pkg.tar.zst
 *.deb
